@@ -1,7 +1,8 @@
-// const stocks = require('./stocks');
+// const express = require('express');
+
+const stocks = require('./stocks');
 const crypto = require('./crypto');
 const forex = require('./forex');
-// const express = require('express');
 
 // const app = express();
 // app.use(express.json());
@@ -11,6 +12,16 @@ const forex = require('./forex');
 // app.get('/api/exchange', async (req, res) => {
 //     try {
 //         const response = await forex.getExchangeRates("USD", "EUR")
+//         res.json(response);
+//     } catch (error) {
+//         res.status(500).json({ error: 'Error fetching data' });
+//     }
+// });
+
+// app.post('/api/stockexchange', async (req, res) => {
+//     const {symbol} = req.body
+//     try {
+//         const response = await stocks.fetchStockData(symbol)
 //         res.json(response);
 //     } catch (error) {
 //         res.status(500).json({ error: 'Error fetching data' });
@@ -40,7 +51,7 @@ const forex = require('./forex');
 // });
 
 module.exports = {
-    // stocks,
+    stocks,
     crypto,
     forex
 };
