@@ -11,7 +11,6 @@ const headers = {
     'Connection': 'keep-alive' ,
     // 'Cookie': 'coinranking_session_token=F-19_oFc-BmTdZqP_TiXYA; FCNEC=%5B%5B%22AKsRol-adguQ7KbQUHtPhxU2MR_HZtSJNf_d-u5VnfstJD_VF3TGlL-go8wCYo7CuX7-POjoz-kEkMqB7xnN5As6WWluJvmPfFYoBfh-VoeLil-HXx0cGN21TKXaz3XyqxCpqpWTRWvIKQrRGSwNyggHfmr22GqNMA%3D%3D%22%5D%5D; __eoi=ID=0f9a62fb07ecaf61:T=1722093678:RT=1722098814:S=AA-AfjayLWeMB8m4JFClcz08iHSP; __gads=ID=1575c1424b448b76:T=1722093678:RT=1722098814:S=ALNI_MY_Xesy77kJffIL_066Vzw6p2WHtA; __gpi=UID=00000eb7506b4022:T=1722093678:RT=1722098814:S=ALNI_MZ6BFowiMwVqIkvDkcJnt3yFkgeOw; coinranking_sticky_closed=closed' ,
     'Host': 'coinranking.com' ,
-    'Referer': 'https://coinranking.com/' ,
     'Sec-Fetch-Dest': 'empty' ,
     'Sec-Fetch-Mode': 'cors' ,
     'Sec-Fetch-Site': 'same-origin' ,
