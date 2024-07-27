@@ -1,5 +1,6 @@
 // src/crypto.ts
 import { getCachedData, setCachedData } from "./cache";
+import { Coin, CryptoData } from "./types/crypto_types";
 
 const BASE_URL = "https://coinranking.com/api/v2";
 
@@ -16,16 +17,6 @@ const headers: HeadersInit = {
 	"User-Agent":
 		"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15",
 };
-
-interface Coin {
-	// Define the structure of a coin object
-	// Add properties as needed
-}
-
-interface CryptoData {
-	// Define the structure of crypto data
-	// Add properties as needed
-}
 
 const searchCoins = async (symbol: string): Promise<Coin[]> => {
 	const cacheKey = `search_suggestions_${symbol}`;

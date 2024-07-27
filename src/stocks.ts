@@ -1,5 +1,6 @@
 // src/stocks.ts
 import { getCachedData, setCachedData } from "./cache";
+import { StockData } from "./types/stocks_types";
 
 const headers: HeadersInit = {
 	Accept: "*/*",
@@ -16,11 +17,6 @@ const headers: HeadersInit = {
 	"User-Agent":
 		"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15",
 };
-
-interface StockData {
-	// Define the structure of stock data
-	// Add properties as needed
-}
 
 const fetchStockData = async (symbol: string): Promise<StockData> => {
 	const cachedData = getCachedData<StockData>(symbol);

@@ -1,5 +1,6 @@
 // src/forex.ts
 import { getCachedData, setCachedData } from "./cache";
+import { ExchangeRate } from "./types/forex_types";
 
 const headers: HeadersInit = {
 	"User-Agent":
@@ -17,10 +18,7 @@ const headers: HeadersInit = {
 	"Sec-Fetch-Site": "same-origin",
 };
 
-interface ExchangeRate {
-	// Define the structure of an exchange rate object
-	// Add properties as needed
-}
+
 
 const getExchangeRates = async (
 	from_currency: string,
