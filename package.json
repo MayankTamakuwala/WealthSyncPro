@@ -1,6 +1,6 @@
 {
 	"name": "mayank-fda",
-	"version": "1.0.20",
+	"version": "1.0.21",
 	"description": "An NPM package that aggregates financial data from various APIs",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
