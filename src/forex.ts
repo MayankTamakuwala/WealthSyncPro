@@ -1,6 +1,6 @@
 // src/forex.ts
 import { getCachedData, setCachedData } from "./cache";
-import { ExchangeRate } from "./types/forex_types";
+import { ExchangeRate, CURRENCIES } from "./types/forex_types";
 
 const headers: HeadersInit = {
 	"User-Agent":
@@ -18,12 +18,17 @@ const headers: HeadersInit = {
 	"Sec-Fetch-Site": "same-origin",
 };
 
-
-
 const getExchangeRates = async (
 	from_currency: string,
 	to_currency: string
 ): Promise<ExchangeRate> => {
+
+    if (CURRENCIES.indexOf(from_currency) == -1) {
+        new Error("404 Not Found: 'from_currency' is not available");
+    } else if (CURRENCIES.indexOf(to_currency) == -1) {
+        new Error("404 Not Found: 'to_currency' is not available");
+    }
+
 	const pair = `exchange_${from_currency}_${to_currency}`;
 	const cachedData = getCachedData<ExchangeRate>(pair);
 	if (cachedData) return cachedData;
