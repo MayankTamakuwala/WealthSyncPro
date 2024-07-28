@@ -18,6 +18,13 @@ const headers: HeadersInit = {
 		"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15",
 };
 
+/**
+ * Searches for coins by symbol and returns a list of matching coins.
+ * If cached data is available, it returns the cached data instead of making a new request.
+ * 
+ * @param symbol The symbol of the coin to search for.
+ * @returns A promise that resolves to a list of matching coins.
+ */
 const searchCoins = async (symbol: string): Promise<Coin[]> => {
 	const cacheKey = `search_suggestions_${symbol}`;
 	const cachedData = getCachedData<Coin[]>(cacheKey);
@@ -34,7 +41,14 @@ const searchCoins = async (symbol: string): Promise<Coin[]> => {
 	return data;
 };
 
-const fetchCryptoData = async (coinId: string): Promise<CryptoData> => {
+/**
+ * Retrieves the real-time data for a specific coin by ID.
+ * If cached data is available, it returns the cached data instead of making a new request.
+ * 
+ * @param coinId The ID of the coin to retrieve data for.
+ * @returns A promise that resolves to the coin data.
+ */
+const getCoinData = async (coinId: string): Promise<CryptoData> => {
 	const cacheKey = `crypto_${coinId}`;
 	const cachedData = getCachedData<CryptoData>(cacheKey);
 	if (cachedData) return cachedData;
@@ -50,7 +64,13 @@ const fetchCryptoData = async (coinId: string): Promise<CryptoData> => {
 	return data;
 };
 
-const fetchTop100CryptoData = async (): Promise<CryptoData> => {
+/**
+ * Retrieves the real-time data for the top 100 crypto coins based on their market value.
+ * If cached data is available, it returns the cached data instead of making a new request.
+ * 
+ * @returns A promise that resolves to the data for the top 100 crypto coins.
+ */
+const getTop100CryptoCoinsData = async (): Promise<CryptoData> => {
 	const cacheKey = "crypto_top_100";
 	const cachedData = getCachedData<CryptoData>(cacheKey);
 	if (cachedData) return cachedData;
@@ -66,4 +86,4 @@ const fetchTop100CryptoData = async (): Promise<CryptoData> => {
 	return data;
 };
 
-export { fetchCryptoData, fetchTop100CryptoData, searchCoins };
+export { getCoinData, getTop100CryptoCoinsData, searchCoins };

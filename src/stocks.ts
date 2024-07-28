@@ -18,7 +18,14 @@ const headers: HeadersInit = {
 		"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Safari/605.1.15",
 };
 
-const fetchStockData = async (symbol: string): Promise<StockData> => {
+/**
+ * Retrieves stock data for a given symbol from Yahoo Finance API.
+ * If cached data is available, it returns the cached data instead of making a new request.
+ * 
+ * @param symbol The stock symbol to retrieve data for.
+ * @returns A promise that resolves to the stock data.
+ */
+const getStockData = async (symbol: string): Promise<StockData> => {
 	const cachedData = getCachedData<StockData>(symbol);
 	if (cachedData) return cachedData;
 
@@ -35,4 +42,4 @@ const fetchStockData = async (symbol: string): Promise<StockData> => {
 	return data;
 };
 
-export { fetchStockData };
+export { getStockData };

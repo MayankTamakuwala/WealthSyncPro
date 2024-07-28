@@ -18,6 +18,14 @@ const headers: HeadersInit = {
 	"Sec-Fetch-Site": "same-origin",
 };
 
+/**
+ * Retrieves the exchange rate for a given currency pair from XE.com API.
+ * If cached data is available, it returns the cached data instead of making a new request.
+ * 
+ * @param from_currency The currency to convert from.
+ * @param to_currency The currency to convert to.
+ * @returns A promise that resolves to the exchange rate object.
+ */
 const getExchangeRates = async (
 	from_currency: string,
 	to_currency: string
