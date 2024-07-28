@@ -1,6 +1,15 @@
+<div align="center">
+<!-- logo -->
+<img src = "logo.png" width="300">
+<h1 align="center">WealthSync Pro</h1>
+<img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+</div>
+
 # WealthSync Pro
 
 Welcome to WealthSync Pro, an npm package designed for seamless finance aggregation. Say goodbye to the challenges of managing API keys, wading through extensive documentation, and dealing with endless subscriptions. WealthSync Pro provides unlimited, streamlined, and hassle-free access to real-time financial data without the need for API keys.
+
+
 
 ## Features
 
