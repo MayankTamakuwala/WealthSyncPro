@@ -1,15 +1,12 @@
 <div align="center">
-<!-- logo -->
-<img src = "logo.png" width="300">
-<h1 align="center">WealthSync Pro</h1>
-<img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+    <img src = "https://github.com/MayankTamakuwala/WealthSyncPro/blob/main/logo.png" width="300">
+    <h1 align="center">WealthSync Pro</h1>
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
 </div>
 
 # WealthSync Pro
 
 Welcome to WealthSync Pro, an npm package designed for seamless finance aggregation. Say goodbye to the challenges of managing API keys, wading through extensive documentation, and dealing with endless subscriptions. WealthSync Pro provides unlimited, streamlined, and hassle-free access to real-time financial data without the need for API keys.
-
-
 
 ## Features
 
@@ -46,6 +43,7 @@ Welcome to WealthSync Pro, an npm package designed for seamless finance aggregat
 ## Installation
 
 Install WealthSync Pro using npm:
+
 ```
 npm install wealthsync-pro
 ```
@@ -55,11 +53,13 @@ npm install wealthsync-pro
 Here’s how to use WealthSync Pro to access different types of financial data:
 
 ### Import
+
 ```
 const { crypto, forex, stocks } = require('wealthsync-pro');
 ```
 
 ### Cryptocurrency Data
+
 ```
 // Get real-time data on top 100 cryptocurrencies
 const top100 = async() => {
@@ -69,11 +69,11 @@ const top100 = async() => {
 }
 
 // Get detailed information for a specific cryptocurrency
-const info = async() => { 
-    await crypto searchCoins('BTC')
+const info = async() => {
+    await crypto.searchCoins('BTC')
         .then(coins => {
             const coinId = coins[0].uuid;
-            return getCoinData(coinId);
+            return crypto.getCoinData(coinId);
         })
         .then(data => console.log(data))
         .catch(err => console.error(err));
@@ -81,6 +81,7 @@ const info = async() => {
 ```
 
 ### Foreign Exchange Data
+
 ```
 // Get real-time conversion rates between selected countries
 const rates = async() => {
@@ -91,6 +92,7 @@ const rates = async() => {
 ```
 
 ### Stock Exchange Data
+
 ```
 // Get real-time information about a specific stock
 const stockdata = async() => {
@@ -103,6 +105,5 @@ const stockdata = async() => {
 ## Disclaimer
 
 This package reverse engineers proprietary finance APIs. Use it at your own risk. The authors are not responsible for any misuse or legal issues that may arise from using this package.
-
 
 Thank you for using WealthSync Pro! We hope you find it as exciting and useful as we do.

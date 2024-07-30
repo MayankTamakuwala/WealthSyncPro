@@ -30,16 +30,24 @@ const getStockData = async (symbol: string): Promise<StockData> => {
 	if (cachedData) return cachedData;
 
 	const url = `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1m&includePrePost=true&events=div%7Csplit%7Cearn&lang=en-US&region=US`;
-	const response = await fetch(url, {
-		headers: {
-			...headers,
-			Referer: `https://finance.yahoo.com/quote/${symbol}/`,
-		},
-	});
-	const data = await response.json();
+	try {
+		const response = await fetch(url, {
+			headers: {
+				...headers,
+				Referer: `https://finance.yahoo.com/quote/${symbol}/`,
+			},
+		});
+		const data = await response.json();
 
-	setCachedData(symbol, data);
-	return data;
+		setCachedData(symbol, data);
+		return data;
+	} catch (error) {
+		if (error instanceof Error) {
+			throw new Error(error.message);
+		} else {
+			throw new Error(String(error));
+		}
+	}
 };
 
 export { getStockData };

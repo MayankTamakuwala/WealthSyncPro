@@ -31,14 +31,23 @@ const searchCoins = async (symbol: string): Promise<Coin[]> => {
 	if (cachedData) return cachedData;
 
 	const url = `${BASE_URL}/search-suggestions?query=${symbol}&referenceCurrencyUuid=yhjMzLPhuIDl`;
-	const response = await fetch(url, {
-		method: "GET",
-		headers: headers,
-	});
-	const data = (await response.json()).data.coins;
 
-	setCachedData(cacheKey, data);
-	return data;
+	try {
+		const response = await fetch(url, {
+			method: "GET",
+			headers: headers,
+		});
+		const data = (await response.json()).data.coins;
+
+		setCachedData(cacheKey, data);
+		return data;
+	} catch (error) {
+		if (error instanceof Error) {
+			throw new Error(error.message);
+		} else {
+			throw new Error(String(error));
+		}
+	}
 };
 
 /**
@@ -54,14 +63,23 @@ const getCoinData = async (coinId: string): Promise<CryptoData> => {
 	if (cachedData) return cachedData;
 
 	const url = `${BASE_URL}/coin/${coinId}?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h`;
-	const response = await fetch(url, {
-		method: "GET",
-		headers: headers,
-	});
-	const data = await response.json();
 
-	setCachedData(cacheKey, data);
-	return data;
+	try {
+		const response = await fetch(url, {
+			method: "GET",
+			headers: headers,
+		});
+		const data = await response.json();
+
+		setCachedData(cacheKey, data);
+		return data;
+	} catch (error) {
+		if (error instanceof Error) {
+			throw new Error(error.message);
+		} else {
+			throw new Error(String(error));
+		}
+	}
 };
 
 /**
@@ -76,14 +94,23 @@ const getTop100CryptoCoinsData = async (): Promise<CryptoData> => {
 	if (cachedData) return cachedData;
 
 	const url = `${BASE_URL}/coins?offset=0&orderBy=marketCap&limit=100&orderDirection=desc&timePeriod=24h&tiers%5B%5D=1&tiers%5B%5D=2`;
-	const response = await fetch(url, {
-		method: "GET",
-		headers: headers,
-	});
-	const data = await response.json();
 
-	setCachedData(cacheKey, data);
-	return data;
+	try {
+		const response = await fetch(url, {
+			method: "GET",
+			headers: headers,
+		});
+		const data = await response.json();
+
+		setCachedData(cacheKey, data);
+		return data;
+	} catch (error) {
+		if (error instanceof Error) {
+			throw new Error(error.message);
+		} else {
+			throw new Error(String(error));
+		}
+	}
 };
 
 export { getCoinData, getTop100CryptoCoinsData, searchCoins };

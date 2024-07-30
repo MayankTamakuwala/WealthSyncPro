@@ -31,10 +31,10 @@ const getExchangeRates = async (
 	to_currency: string
 ): Promise<ExchangeRate> => {
 
-    if (CURRENCIES.indexOf(from_currency) == -1) {
-        new Error("404 Not Found: 'from_currency' is not available");
+	if (CURRENCIES.indexOf(from_currency) == -1) {
+        throw Error(`404 Not Found: 'from_currency' is not available. These are the currencies you can choose from\n\n${CURRENCIES.toString()}`);
     } else if (CURRENCIES.indexOf(to_currency) == -1) {
-        new Error("404 Not Found: 'to_currency' is not available");
+        throw Error(`404 Not Found: 'to_currency' is not available. These are the currencies you can choose from\n\n${CURRENCIES.toString()}`);
     }
 
 	const pair = `exchange_${from_currency}_${to_currency}`;
@@ -42,13 +42,22 @@ const getExchangeRates = async (
 	if (cachedData) return cachedData;
 
 	const url = `https://www.xe.com/api/protected/live-currency-rates?currencyPairs=${from_currency}/${to_currency}`;
-	const response = await fetch(url, {
-		headers: headers,
-	});
-	const data = (await response.json())[0];
 
-	setCachedData(pair, data);
-	return data;
+	try {
+		const response = await fetch(url, {
+			headers: headers,
+		});
+		const data = (await response.json())[0];
+
+		setCachedData(pair, data);
+		return data;
+	} catch (error) {
+		if (error instanceof Error) {
+			throw new Error(error.message);
+		} else {
+			throw new Error(String(error));
+		}
+	}
 };
 
 export { getExchangeRates };
