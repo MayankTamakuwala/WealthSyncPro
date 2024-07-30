@@ -1,6 +1,6 @@
 {
 	"name": "wealthsync-pro",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "An NPM package that aggregates financial data from various APIs",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
